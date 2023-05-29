@@ -9,7 +9,7 @@ You will need open your terminal. You can open it by pressing `command+space` an
 ```
 brew update
 brew upgrade git
-brew upgrade node@16
+brew upgrade node@18
 npm install -g npm@latest
 npm install -g eslint@latest
 npm install -g eslint-plugin-react
@@ -25,27 +25,28 @@ You will also need to install the _React Developer Tools_. It is available in [G
 This is what you will be installing today:
 
 1. Microsoft Teams
-2. Slack
-3. Xcode
-4. Homebrew
-5. Git & Github
-6. Node.js (latest LTS version) and NPM Packages
-7. Visual Studio Code (Recommended) and Plugins
-8. Chrome or Firefox and Extensions
+2. Xcode
+3. Homebrew
+4. Git and Github
+5. Node.js (latest LTS version) and NPM Packages
+6. Visual Studio Code (Recommended) and Extensions
+7. Chrome or Firefox and Extensions
 
 ### Microsoft Teams
 
 Before class began, you should have received emails and training from CanCode Communities about on how to install, setup, and use Microsoft Teams.
 
-### Slack
-
-Before installing Slack, please accept the invite to AlbanyCanCode's channel (_albanycancode_). You should have received an email before class.
-
-Use can use the [web](https://slack.com/get-started?email_first=1#/signin) or desktop version. The desktop version can be found in the App Store.
+You will need to give Teams permissions for _Screen Recording_, because we ask students to share their screens during class. [Here is how you can enable this on macOS](https://support.microsoft.com/en-au/office/share-content-in-a-meeting-in-teams-fcc2bf59-aecd-4481-8f99-ce55dd836ce8#:~:text=Select%20Open%20System%20Preferences%20from,try%20sharing%20your%20screen%20again.)
 
 ### Xcode
 
 Xcode can be found in the App Store. It will take around 50 minutes to install, so please install ASAP.
+
+Once Xcode is complete, go to your terminal and install the command line tools:
+
+```bash
+xcode-select --install
+```
 
 ### Homebrew
 
@@ -53,7 +54,7 @@ Xcode can be found in the App Store. It will take around 50 minutes to install, 
 
 You will need open your terminal. You can open it by pressing `command+space` and searching for _terminal_.
 
-If you already have Homebrew installed or if you are not sure whether you have it installed, type `brew -v` in your terminal. If you see a response like _Homebrew 3.3.14_, then you have it installed. Update homebrew with `brew update` and then you can skip ahead to the next section. If you get a _command not found_ error, you will need to install Homebrew.
+If you already have Homebrew installed or if you are not sure whether you have it installed, type `brew -v` in your terminal. If you see a response like _Homebrew 4.0.19_, then you have it installed. Update homebrew with `brew update` and then you can skip ahead to the next section. If you get a _command not found_ error, you will need to install Homebrew.
 
 To install Homebrew, type this in your terminal:
 
@@ -71,13 +72,13 @@ Type `echo $PATH`. Make sure that _/usr/local/bin_ is somewhere in the response.
 export PATH="/usr/local/bin:$PATH"
 ```
 
-## Git && Github
+## Git and Github
 
 Git is version control software. It is used for sharing code, combining team members' code and managing different versions of your code.
 
 You will need to [create a Github account](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home) if you do not have one.
 
-If you are not sure whether you have it installed, type `git --version` in your terminal. If you see output like this - _git version 2.35.1_ - then congratulations! You already have git installed and you can skip ahead to the next section.
+If you are not sure whether you have it installed, type `git --version` in your terminal. If you see output like this - _git version 2.40.1_ - then congratulations! You already have git installed and you can skip ahead to the next section.
 
 To install git, type this in your terminal:
 
@@ -93,7 +94,7 @@ When it's finished, type `git --version` to confirm that it has installed.
 
 Node.js is a JavaScript runtime engine. It allows you to run JavaScript programs outside of Chrome, Safari, Edge or another web browser.
 
-You will need to have the latest _LTS_ version of Node installed as of March 2022 (16.x). If you already have Node.js installed, type `node -v` in your terminal. If you do not have the latest version, you can do one of the following to things:
+You will need to have the latest _LTS_ version of Node installed as of June 2023 (18.x). If you already have Node.js installed, type `node -v` in your terminal. If you do not have the latest version, you can do one of the following to things:
 
 1. [Upgrade Node.js with whatever you originally installed Node.js with.](https://flaviocopes.com/how-to-update-node/) If you have Node.js projects on your computer and you wish to maintain them, this could break your existing projects.
 2. Install multiple version of Node.js on your computer with NVM. See the _Node Version Manager (NVM)_ section of the [Linux Installation Guide](InstallationGuideLinuxAndNVM.md).
@@ -101,7 +102,7 @@ You will need to have the latest _LTS_ version of Node installed as of March 202
 If you do not have Node.js installed, type this is your terminal:
 
 ```bash
-brew install node@16
+brew install node@18
 ```
 
 When it’s finished, type `node -v` to confirm that it is now installed.
@@ -135,6 +136,10 @@ To install, go to https://code.visualstudio.com and click on the _Download Mac U
 When it finishes downloading, double click on the downloaded ZIP file and move Visual Studio Code from your Downloads folder to your Applications folder. You many need to enter your password.
 
 Open Visual Studio Code.
+
+If you see this security warning at any time during our class, click on _Open_.
+
+![Do you trust the authors of these files](install-screens/vscode-security-warning.png)
 
 #### Adding Visual Studio Code to Your Path Variable
 
@@ -178,9 +183,13 @@ You can now adjust Visual Studio's settings so that it will format on save and w
 Paste the following into the JSON file. Do not overwrite any settings that you already have.
 
 ```json
+{
+  // ...
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
-  "editor.tabSize": 2,
+  "editor.tabSize": 2
+  // ..
+}
 ```
 
 ### Chrome or Firefox and Extensions
@@ -188,7 +197,6 @@ Paste the following into the JSON file. Do not overwrite any settings that you a
 You are required to use Chrome or Firefox because the React and Redux extensions for debugging your code are only available for these browsers. We recommend Chrome because we will be demonstrating Chrome's tools in class, but you are free to download any of following:
 
 - [Chrome](https://www.google.com/chrome/) & [React Developer Tools for Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-- [FirefoxDeveloperEdition](https://www.mozilla.org/en-US/firefox/developer/) & [React Developer Tools for Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
 - [Firefox](https://www.mozilla.org/en-US/firefox/) & [React Developer Tools for Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
 
 We will also ask you install the _React Developer Tools_ extension as well. See the links above.

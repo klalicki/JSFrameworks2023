@@ -3,9 +3,9 @@
 **[AlbanyCanCode Course](https://albanycancode.org/)** \
 AlbanyCanCode is a part of [CanCode Communities](https://cancode.org/courses/)
 
-**Spring 2022**
+**Summer 2023**
 
-**Important Note:** This syllabus, along with course assignments and due dates are subject to change. It is the student’s responsibility to check the Slack channel, course materials and updates to the syllabus. Any changes will be clearly noted in course announcements.
+**Important Note:** This syllabus, along with course assignments and due dates are subject to change. It is the student’s responsibility to check the Teams channel, course materials and updates to the syllabus. Any changes will be clearly noted in course announcements.
 
 ## Course Description
 
@@ -16,7 +16,7 @@ This course will also introduce you to the tools and practice of the trade. This
 ## Faculty
 
 **Instructors** - Jamal Taylor and Matina Patsos \
-**Program Directors** - Lee McPeters and Elizabeth Wallace
+**Program Directors** - Lee McPeters and Caro Anders-Maralit
 
 ## Course Time & Location
 
@@ -27,8 +27,8 @@ CanCode Communities' administration should provide you access to our class's tea
 
 Mondays and Wednesdays \
 5:45pm - 8:45pm \
-First day of class: 3/14/2022 \
-Last day of class: 5/25/2022 \*\
+First day of class: 6/5/2023 \
+Last day of class: 9/11/2023 \*\
 Final project due date: TBA
 Graduation date: TBA
 
@@ -62,7 +62,7 @@ Graduation date: TBA
 
 The class will be taught over Microsoft Team's video conferencing. AlbanyCanCode administration will give you access and provide training over Microsoft Teams and classes will be recorded. Please contact either Lee McPeters or another member of the administrative team for technical support.
 
-Most of the communication outside of class will take place on Slack. Please check it regularly. The class’s public channel is _#jsframeworks-2022_.
+Most of the communication outside of class will take place in Teams. Please check it regularly. The class’s public channel is _#jsframeworks-2022_.
 
 ### Grading
 
@@ -105,7 +105,7 @@ If you must drop the course, please contact Rachel Sheridan at rachel@albanycanc
 
 ## Schedule
 
-**Important Note:** This schedule, along with course assignments and due dates are subject to change. It is the student’s responsibility to check the Slack channel, course materials and updates to the syllabus. Any changes will be clearly noted in course announcements.
+**Important Note:** This schedule, along with course assignments and due dates are subject to change. It is the student’s responsibility to check the Teams channel, course materials and updates to the syllabus. Any changes will be clearly noted in course announcements.
 
 ### Weeks 1 - 3
 
