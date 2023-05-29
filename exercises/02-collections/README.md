@@ -7,7 +7,7 @@ In Visual Studio code, press `command+shift+v` (Mac) or `ctrl+shift+v` (Windows)
 Using your command line, you will need to navigate to the this folder, install all dependencies, and start the app.
 
 ```bash
-cd exercises/02-arrays/
+cd exercises/02-collections/
 code . # if you would like to open this in a separate VSCode window
 npm install
 npm start
@@ -24,14 +24,6 @@ npm run test
 If you do not see any test results, press `a` to run all tests. The tests will rerun whenever you make a change.
 
 To stop the tests, press `ctrl+c`.
-
-## Reason for the challenge
-
-As a front end developer, rendering items to screen is an important skill to have.
-
-In this challenge, you will be tasked with rendering a series of images to the screen.
-
-Styling is not important in this challenge, but using the [.map function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) is vital.
 
 ## Developer Instructions
 
