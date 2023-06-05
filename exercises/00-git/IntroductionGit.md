@@ -1,6 +1,6 @@
 # Instructors
 
-- Jamal Taylor
+- Jamal W Taylor
 - Matina Patsos
 
 # Students
