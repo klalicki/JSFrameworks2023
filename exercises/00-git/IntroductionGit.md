@@ -9,3 +9,6 @@
 - Kristoff Lalicki
 - Kevin Browne
 - Manuel Pinzon
+- Edwin Allen
+- Joseph Stella
+- Erdem Zengin
