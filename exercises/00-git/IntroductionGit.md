@@ -5,4 +5,9 @@
 
 # Students
 
-Erdem Zengin
+- Ariadna Vanegas-Rubio
+- Kristoff Lalicki
+- Kevin Browne
+- Edwin Allen
+- Joseph Stella
+- Erdem Zengin
