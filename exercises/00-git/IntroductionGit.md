@@ -7,3 +7,4 @@
 
 - Ariadna Vanegas-Rubio
 - Kristoff Lalicki
+- Kevin Browne
