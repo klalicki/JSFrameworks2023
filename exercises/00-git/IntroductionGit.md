@@ -5,4 +5,5 @@
 
 # Students
 
+- Ariadna Vanegas-Rubio
 - Kristoff Lalicki
