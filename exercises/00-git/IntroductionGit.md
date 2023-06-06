@@ -9,3 +9,4 @@
 - Kristoff Lalicki
 - Kevin Browne
 - Edwin Allen
+- Joseph Stella
