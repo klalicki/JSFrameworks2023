@@ -4,3 +4,7 @@
 - Matina Patsos
 
 # Students
+
+- Ariadna Vanegas-Rubio
+- Kristoff Lalicki
+- Kevin Browne
