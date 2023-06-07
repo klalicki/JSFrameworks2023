@@ -135,13 +135,18 @@ const onlyEvenValues = (arr) => {
  *  removeVowels('ZZZZZZ') // ('zzzzzz')
  */
 const removeVowels = (str) => {
-  let strArray = str.toLowerCase().split("");
+  //option 1: filter function
+  /*   let strArray = str.toLowerCase().split("");
   const vowels = ["a", "e", "i", "o", "u"];
 
   //helper function that checks if a given letter is a consonant and returns true if it is
   const isConsonant = (letter) => !vowels.includes(letter);
   let newStrArray = strArray.filter(isConsonant);
   return newStrArray.join("");
+ */
+  
+  //option 2: replace, w/ regex
+  return str.toLowerCase().replace(/[aeiou]+/gm, "");
 };
 
 /**
