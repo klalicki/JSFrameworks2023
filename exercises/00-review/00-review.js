@@ -34,13 +34,21 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
-  let highest = array[0];
-  array.forEach((item) => {
-    if (item > highest) {
-      highest = item;
-    }
+
+  //solution 1: iterates through the array and checks each value against the current highest value - sets the current highest to the array item if the array item is higher
+  // let highest = array[0];
+  // array.forEach((item) => {
+  //   if (item > highest) {
+  //     highest = item;
+  //   }
+  // });
+  // return highest;
+
+  //solution 2: sorts the array from highest to lowest, then takes the first element;
+  const sortedArr = array.sort((a, b) => {
+    return b - a;
   });
-  return highest;
+  return sortedArr[0];
 };
 
 /**
@@ -76,9 +84,7 @@ const combineObject = (obj1, obj2) => {
  */
 
 const doubleValues = (arr) => {
-  return arr.map((item) => {
-    return item * 2;
-  });
+  return arr.map((num) => num * 2);
 };
 
 /**
@@ -131,13 +137,10 @@ const onlyEvenValues = (arr) => {
 const removeVowels = (str) => {
   let strArray = str.toLowerCase().split("");
   const vowels = ["a", "e", "i", "o", "u"];
-  let newStrArray = strArray.filter((letter) => {
-    if (vowels.includes(letter)) {
-      return false;
-    } else {
-      return true;
-    }
-  });
+
+  //helper function that checks if a given letter is a consonant and returns true if it is
+  const isConsonant = (letter) => !vowels.includes(letter);
+  let newStrArray = strArray.filter(isConsonant);
   return newStrArray.join("");
 };
 
@@ -193,9 +196,7 @@ const getTempOfTomorrow = () => {
  *  addItems([1,-2,-3]) // -4
  */
 const addItems = (arr) => {
-  return arr.reduce((a, b) => {
-    return a + b;
-  });
+  return arr.reduce((a, b) => a + b);
 };
 
 /**
