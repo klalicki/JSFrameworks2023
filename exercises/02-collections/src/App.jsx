@@ -16,7 +16,6 @@ function App() {
           />
         );
       })}
-
       {/* images of technologies */}
       {technologies.map((item, index) => {
         return (
