@@ -1,4 +1,5 @@
-import greet from "./greet.js";
+import greet from './greet.js';
+
 /**
  * Solve this problem using ES modules (ESM).
  * ES modules allow you break up your code into multiple files (or modules), and then share code between different files.
@@ -8,9 +9,7 @@ import greet from "./greet.js";
  * 1. Create a new file in the same folder as this file called "greet.js". (NOTE that you will need to include the extension ".js" in order for this to work)
  * 2. Copy the "greet" function below and paste it into the new file "greet.js"
 
-const greet = (name) => {
-  return `Hello ${name}!`;
-};
+
 
  * 3. Export the "greet" function from "greet.js"
  * 4. Import the function at the top of this file using the name "greet"
@@ -27,6 +26,7 @@ const greet = (name) => {
  * @param  { array }
  * @returns { number } the highest number that was in the array
  * @example
+ *
  * highestNumber([1, 10, 2, 3, 4]) // 10
  * highestNumber([-1, -5, -4]) // -1
  *
@@ -34,21 +34,7 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
-
-  //solution 1: iterates through the array and checks each value against the current highest value - sets the current highest to the array item if the array item is higher
-  // let highest = array[0];
-  // array.forEach((item) => {
-  //   if (item > highest) {
-  //     highest = item;
-  //   }
-  // });
-  // return highest;
-
-  //solution 2: sorts the array from highest to lowest, then takes the first element;
-  const sortedArr = array.sort((a, b) => {
-    return b - a;
-  });
-  return sortedArr[0];
+  return array.reduce((a, b) => Math.max(a, b), -Infinity);
 };
 
 /**
@@ -61,7 +47,9 @@ const highestNumber = (array) => {
  **/
 
 const combineArray = (array1, array2) => {
-  return [...array1, ...array2];
+  // Write your answer here
+  const array = [...array1, ...array2];
+  return array;
 };
 
 /**
@@ -74,6 +62,8 @@ const combineArray = (array1, array2) => {
 const combineObject = (obj1, obj2) => {
   return { ...obj1, ...obj2 };
   // Write your answer here
+  let combo = { ...obj1, ...obj2 };
+  return combo;
 };
 
 /**
@@ -84,7 +74,9 @@ const combineObject = (obj1, obj2) => {
  */
 
 const doubleValues = (arr) => {
-  return arr.map((num) => num * 2);
+  // Write your answer here
+  let doubles = arr.map((num) => num * 2); // each num gets multiplied by 2
+  return doubles;
 };
 
 /**
@@ -98,22 +90,7 @@ const doubleValues = (arr) => {
  */
 const onlyEvenValues = (arr) => {
   // Write your answer here
-
-  ///second solution - more readable and uses a helper function
-
-  const isEven = (val) => {
-    if (val % 2) {
-      return false;
-    } else {
-      return true;
-    }
-  };
-  return arr.filter(isEven);
-
-  //first solution - less lines of code but less readable
-  /*   return arr.filter((item) => {
-    return !(item % 2);
-  }); */
+  return arr.filter((num) => num % 2 === 0); //divisibility by 2 and remainder is 0 it is an even number
 };
 
 /**
@@ -135,18 +112,18 @@ const onlyEvenValues = (arr) => {
  *  removeVowels('ZZZZZZ') // ('zzzzzz')
  */
 const removeVowels = (str) => {
-  //option 1: filter function
-  /*   let strArray = str.toLowerCase().split("");
-  const vowels = ["a", "e", "i", "o", "u"];
-
-  //helper function that checks if a given letter is a consonant and returns true if it is
-  const isConsonant = (letter) => !vowels.includes(letter);
-  let newStrArray = strArray.filter(isConsonant);
-  return newStrArray.join("");
- */
-  
-  //option 2: replace, w/ regex
-  return str.toLowerCase().replace(/[aeiou]+/gm, "");
+  // Write your answer here
+  const vowels = ["a", "e", "i", "o", "u"]; // vowels so we know what we are looking for
+  let newStr = str.toLowerCase(); // makes any string lowercase and easier to filter thru
+  let leftOver = ""; // we store left over letters after taking out vowels
+  for (let i = 0; i < newStr.length; i++) {
+    // filters thru each letter in a string
+    if (!vowels.includes(newStr[i])) {
+      // if not a vowel it gets added to leftOver
+      leftOver += newStr[i];
+    }
+  }
+  return leftOver;
 };
 
 /**
@@ -160,7 +137,7 @@ const getIsHungryText = () => {
   let isStomachEmpty = false;
   /* convert this if else statement into a ternary expression */
 
-  // let isHungry;
+  let isHungry = isStomachEmpty ? "Go eat something." : "Keep coding!";
   // if (isStomachEmpty) {
   //   isHungry = "Go eat something.";
   // } else {
@@ -201,7 +178,8 @@ const getTempOfTomorrow = () => {
  *  addItems([1,-2,-3]) // -4
  */
 const addItems = (arr) => {
-  return arr.reduce((a, b) => a + b);
+  // Write your answer here
+  return arr.reduce((accum, currentValue) => accum + currentValue);
 };
 
 /**
@@ -216,18 +194,10 @@ const addItems = (arr) => {
  */
 
 const removeDuplicates = (array) => {
-  //solution 1: sets
-  /*   const newSet = new Set(array);
-  return [...newSet]; */
-
-  //solution 2: no sets
-  const newArr = [];
-  array.forEach((item) => {
-    if (!newArr.includes(item)) {
-      newArr.push(item);
-    }
-  });
-  return newArr;
+  // Write your answer here
+  return [...new Set(array)];
+  //set is a data structure that creates a new set object which auto removes dup values
+  // Return an array of unique values
 };
 
 /**
@@ -242,15 +212,15 @@ try {
   // However, I am just using try ... catch to get the unit test to work
 }
 export {
-  greeter,
-  highestNumber,
+  addItems,
   combineArray,
   combineObject,
   doubleValues,
-  onlyEvenValues,
-  removeVowels,
   getIsHungryText,
   getTempOfTomorrow,
-  addItems,
+  greeter,
+  highestNumber,
+  onlyEvenValues,
   removeDuplicates,
+  removeVowels,
 };

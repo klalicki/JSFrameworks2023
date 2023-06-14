@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from 'react';
 
 /**
  * Fix the errors inside of this React component.

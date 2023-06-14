@@ -1,4 +1,10 @@
+import React from 'react';
+
 const Me = () => {
-  return <h3>My name is Kristoff</h3>;
+  return (
+    <div>
+      <h1>My name is Ari</h1>
+    </div>
+  );
 };
 export default Me;
