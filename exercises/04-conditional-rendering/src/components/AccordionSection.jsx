@@ -10,7 +10,9 @@ const AccordionSection = ({
         {title}
       </div>
       <div className={`content  ${isOpen ? "active" : null}`}>
-        <p className="transition visible">{content}</p>
+        <p className={`transition ${isOpen ? "visible" : "hidden"}`}>
+          {content}
+        </p>
       </div>
     </>
   );
