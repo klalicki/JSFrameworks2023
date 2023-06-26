@@ -10,8 +10,8 @@ const TempConverter = ({ valueF }) => {
     <>
       <h2>Temperature Converter</h2>
       <p>
-        The value is {isConverting ? convertFtoC(valueF) : valueF} degrees{" "}
-        {isConverting ? "Celsius" : "Fahrenheit"}.
+        The value is {isConverting ? convertFtoC(valueF) : valueF} degrees
+        {isConverting ? " Celsius" : " Fahrenheit"}.
       </p>
       <button
         className="btn btn-dark"
