@@ -38,7 +38,7 @@ const GuessTheNumber = () => {
         max={10}
         onChange={handleGuessChange}
       />
-      <button onClick={handleSubmitGuess}>Submit Guess</button>
+      {!gameOver && <button onClick={handleSubmitGuess}>Submit Guess</button>}
       {gameOver && <button onClick={handleResetButton}>Reset</button>}
       {/* <h1>correct value: {gameNumber}</h1> */}
       {/* <h2>your guess: {userGuess}</h2> */}
