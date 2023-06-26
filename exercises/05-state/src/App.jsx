@@ -5,7 +5,7 @@ import LessText from "./components/LessText/LessText";
 import CharacterCount from "./components/CharacterCount/CharacterCount";
 
 //Import GuessTheNumber
-
+import GuessTheNumber from "./components/GuessTheNumber/GuessTheNumber";
 function App() {
   return (
     <>
@@ -26,6 +26,7 @@ function App() {
       <div className="container">
         <h1 className="h3">Challenge 3 - Guessing The Number</h1>
         {/* Add GuessingTheNumber here */}
+        <GuessTheNumber />
       </div>
     </>
   );
