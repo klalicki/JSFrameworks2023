@@ -10,18 +10,10 @@ const LessText = ({ text, maxLength }) => {
       <button
         className="btn btn-dark"
         onClick={() => {
-          setIsShortened(false);
+          setIsShortened(!isShortened);
         }}
       >
-        Read More
-      </button>
-      <button
-        className="btn btn-dark"
-        onClick={() => {
-          setIsShortened(true);
-        }}
-      >
-        Read Less
+        {isShortened ? "Read More" : "Read Less"}
       </button>
     </>
   );
