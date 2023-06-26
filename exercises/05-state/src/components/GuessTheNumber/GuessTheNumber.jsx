@@ -3,7 +3,7 @@ const GuessTheNumber = () => {
   const getRandomNumber = () => {
     return Math.round(Math.random() * 10);
   };
-  const [userGuess, setUserGuess] = useState(0);
+  const [userGuess, setUserGuess] = useState("");
   const [gameNumber, setGameNumber] = useState(getRandomNumber());
   const [userMessage, setUserMessage] = useState("");
   const [gameOver, setGameOver] = useState(false);
@@ -27,6 +27,7 @@ const GuessTheNumber = () => {
   };
   const handleResetButton = () => {
     setGameNumber(getRandomNumber());
+    setUserGuess("");
     setUserMessage("");
     setGameOver(false);
   };
@@ -37,6 +38,7 @@ const GuessTheNumber = () => {
         type="number"
         min={0}
         max={10}
+        value={userGuess}
         onChange={handleGuessChange}
       />
       <div className="form-group pt-3 pb-3">
