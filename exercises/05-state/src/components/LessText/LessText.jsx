@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const LessText = ({ text, maxLength }) => {
-  const [isShortened, setIsShortened] = useState(false);
+  const [isShortened, setIsShortened] = useState(true);
 
   return (
     <>

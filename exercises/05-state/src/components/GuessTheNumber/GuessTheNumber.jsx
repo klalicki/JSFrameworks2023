@@ -31,19 +31,37 @@ const GuessTheNumber = () => {
     setGameOver(false);
   };
   return (
-    <>
+    <form>
+      <p>Please enter a number!</p>
       <input
         type="number"
         min={0}
         max={10}
         onChange={handleGuessChange}
       />
-      {!gameOver && <button onClick={handleSubmitGuess}>Submit Guess</button>}
-      {gameOver && <button onClick={handleResetButton}>Reset</button>}
+      <div className="form-group pt-3 pb-3">
+        {!gameOver && (
+          <button
+            className="btn btn-dark"
+            onClick={handleSubmitGuess}
+          >
+            Submit Guess
+          </button>
+        )}
+        {gameOver && (
+          <button
+            className="btn btn-dark"
+            onClick={handleResetButton}
+          >
+            Reset
+          </button>
+        )}
+      </div>
+
       {/* <h1>correct value: {gameNumber}</h1> */}
       {/* <h2>your guess: {userGuess}</h2> */}
       {userMessage && <h3>{userMessage}</h3>}
-    </>
+    </form>
   );
 };
 export default GuessTheNumber;
