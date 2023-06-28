@@ -186,6 +186,7 @@ function App() {
           id="signUpForNewsLetter"
           name="signUpForNewsLetter"
           type="checkbox"
+          checked={formData.signUpForNewsLetter}
           className="form-check-input"
         />
         <label
