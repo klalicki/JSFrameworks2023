@@ -6,23 +6,33 @@ import statesList from "./assets/states.json";
 import countriesList from "./assets/countries.json";
 
 function App() {
+  // establishes state object for form data, sets default country and state
   const [formData, setFormData] = useState({
     country: "United States",
     state: "NY",
   });
+
+  // establishes state to track whether or not form has been submitted
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // handles all input elements in the form
   const handleChange = (event) => {
-    console.table(formData);
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.table(formData);
+    // select handler based on type of input
+    if (event.target.type === "checkbox") {
+      // special handler for checkbox (using 'checked' property instead of 'value')
+      setFormData({ ...formData, [event.target.name]: event.target.checked });
+    } else {
+      //standard handler for all other input types
+      setFormData({ ...formData, [event.target.name]: event.target.value });
+    }
   };
-  const handleCheckbox = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.checked });
-  };
+
+  // submit handler: stops page from refreshing, and sets the IsSubmitted flag to true
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsSubmitted(true);
   };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -172,7 +182,7 @@ function App() {
       </div>
       <div className="mb-3 form-check">
         <input
-          onChange={handleCheckbox}
+          onChange={handleChange}
           id="signUpForNewsLetter"
           name="signUpForNewsLetter"
           type="checkbox"
@@ -201,10 +211,7 @@ function App() {
         Submit
       </button>
 
-      {/*
-       * Find a way to only display this once the form has been submitted.
-       * Hint: You will need to change "false" below with something else
-       */}
+      {/* shows this element only if the form has been submitted */}
       {isSubmitted && (
         <div className="card card-body bg-light mt-4 mb-4">
           Results:
