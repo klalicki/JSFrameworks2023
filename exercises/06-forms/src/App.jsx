@@ -8,8 +8,14 @@ import countriesList from "./assets/countries.json";
 function App() {
   // establishes state object for form data, sets default country and state
   const [formData, setFormData] = useState({
-    country: "United States",
+    firstName: "",
+    lastName: "",
+    addressLine1: "",
+    city: "",
     state: "NY",
+    postalCode: "",
+    country: "United States",
+    signUpForNewsLetter: false,
   });
 
   // establishes state to track whether or not form has been submitted
