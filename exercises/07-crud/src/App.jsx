@@ -9,11 +9,10 @@ const GroceryList = () => {
     price: "",
     priceIsValid: false,
   });
-  const [totalCost, setTotalCost] = useState(0);
 
   const calcTotalCost = () => {
     const prices = list.map((item) => item.price);
-    setTotalCost(prices.reduce((a, b) => a + b, 0));
+    return prices.reduce((a, b) => a + b, 0);
   };
 
   const addItem = (itemName, itemPrice) => {
@@ -28,6 +27,9 @@ const GroceryList = () => {
     setList(newList);
   };
 
+  const handleClear = () => {
+    setList([]);
+  };
   const handleName = (e) => {
     setCurItem({
       ...curItem,
@@ -49,6 +51,7 @@ const GroceryList = () => {
     if (curItem.priceIsValid && curItem.nameIsValid) {
       addItem(curItem.name, curItem.price);
       calcTotalCost();
+      document.querySelector("#nameInput").focus();
     }
 
     // clear the form fields to make it easier to enter the next item
@@ -69,6 +72,7 @@ const GroceryList = () => {
         >
           <div className="col">
             <input
+              id="nameInput"
               onChange={handleName}
               className="form-control"
               type="text"
@@ -124,7 +128,7 @@ const GroceryList = () => {
               return (
                 <tr>
                   <td>{item.name}</td>
-                  <td>{item.price}</td>
+                  <td>${item.price.toFixed(2)}</td>
                   <td>
                     <button
                       onClick={() => {
@@ -142,10 +146,11 @@ const GroceryList = () => {
           </tbody>
         </table>
         <p className="lead">
-          <strong>Total Cost: ${totalCost.toFixed(2).toString()}</strong>
+          <strong>Total Cost: ${calcTotalCost().toFixed(2)}</strong>
         </p>
         <div className="d-flex justify-content-end">
           <button
+            onClick={handleClear}
             type="button"
             className="btn btn-outline-success"
           >
