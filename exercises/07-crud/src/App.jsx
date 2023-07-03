@@ -8,19 +8,24 @@ const GroceryList = () => {
     nameIsValid: false,
     price: "",
     priceIsValid: false,
+    nameErrorFlag: false,
+    priceErrorFlag: false,
   });
 
   const calcTotalCost = () => {
+    // creates a list containing all the item prices, then adds them together
     const prices = list.map((item) => item.price);
     return prices.reduce((a, b) => a + b, 0);
   };
 
   const addItem = (itemName, itemPrice) => {
+    // adds the new item to the end of the list
     const newItem = { name: itemName, price: itemPrice };
     setList([...list, newItem]);
   };
 
   const removeItem = (indexToRemove) => {
+    // removes the item at the specified index
     const newList = list.filter((_item, index) => {
       return index !== indexToRemove;
     });
@@ -28,39 +33,53 @@ const GroceryList = () => {
   };
 
   const handleClear = () => {
+    // clears the entire list
     setList([]);
   };
   const handleName = (e) => {
+    // sets the current item name, and determines if it is a valid input
     setCurItem({
       ...curItem,
       name: e.target.value,
       nameIsValid: e.target.value.length > 0,
     });
-    console.log(e.target.value.length);
   };
   const handlePrice = (e) => {
+    // sets the current item price, and determines if it is a valid input
+
     setCurItem({
       ...curItem,
       price: parseFloat(e.target.value),
       priceIsValid: parseFloat(e.target.value) > 0,
     });
-    console.log(e.target.value.length);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    // check if the item is OK to add
     if (curItem.priceIsValid && curItem.nameIsValid) {
+      //item is valid, add it!
       addItem(curItem.name, curItem.price);
       calcTotalCost();
       document.querySelector("#nameInput").focus();
-    }
 
-    // clear the form fields to make it easier to enter the next item
-    setCurItem({
-      name: "",
-      nameIsValid: false,
-      price: "",
-      priceIsValid: false,
-    });
+      // clear the form fields to make it easier to enter the next item
+      setCurItem({
+        name: "",
+        nameIsValid: false,
+        nameErrorFlag: false,
+        price: "",
+        priceIsValid: false,
+        priceErrorFlag: false,
+      });
+    } else {
+      //item is not valid - show error(s)
+      setCurItem({
+        ...curItem,
+        priceErrorFlag: !curItem.priceIsValid,
+        nameErrorFlag: !curItem.nameIsValid,
+      });
+    }
   };
 
   return (
@@ -80,11 +99,11 @@ const GroceryList = () => {
               aria-label="Name of grocery item..."
               value={curItem.name}
             />
-            {curItem.nameIsValid ? null : (
-              <div className="alert alert-warning">
+            {curItem.nameErrorFlag ? (
+              <div className="alert alert-danger">
                 Please enter an item name
               </div>
-            )}
+            ) : null}
           </div>
           <div className="col">
             <input
@@ -97,16 +116,20 @@ const GroceryList = () => {
               placeholder="Cost of grocery item..."
               aria-label="Cost of grocery item..."
             />
-            {curItem.priceIsValid ? null : (
-              <div className="alert alert-warning">
+            {curItem.priceErrorFlag ? (
+              <div className="alert alert-danger">
                 Please enter a valid price
               </div>
-            )}
+            ) : null}
           </div>
           <div className="col-md-auto">
             <button
               type="submit"
-              className="btn btn-success"
+              className={`btn ${
+                curItem.priceIsValid && curItem.nameIsValid
+                  ? "btn-success"
+                  : "btn-secondary"
+              }`}
             >
               Add
             </button>
@@ -126,7 +149,7 @@ const GroceryList = () => {
           <tbody>
             {list.map((item, index) => {
               return (
-                <tr>
+                <tr key={item.name}>
                   <td>{item.name}</td>
                   <td>${item.price.toFixed(2)}</td>
                   <td>
