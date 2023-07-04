@@ -44,7 +44,7 @@ Source: https://daveceddia.com/usecontext-hook/
 Using your command line, you will need to navigate to the this folder, install all dependencies, and start the app.
 
 ```bash
-cd exercises/09a-context-api/
+cd exercises/09-context-api/
 code . # if you would like to open this in a separate VSCode window
 npm install
 npm start
@@ -56,7 +56,7 @@ If, at any time, you need to stop the app, press `ctrl+c`.
 
 As a user, I would like to click a button to switch the language between English ("en") and Spanish ("es").
 
-![Creating a multi-lingual application with the Context API](08a-context-api.gif)
+![Creating a multi-lingual application with the Context API](context-api.gif)
 
 ## Instructions
 

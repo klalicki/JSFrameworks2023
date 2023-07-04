@@ -18,7 +18,7 @@ Here are some examples of using the Context API across multiple files and compon
 Using your command line, you will need to navigate to the this folder, install all dependencies, and start the app.
 
 ```bash
-cd exercises/08b-context-api/
+cd exercises/10-context-api/
 code . # if you would like to open this in a separate VSCode window
 npm install
 npm start
@@ -28,7 +28,7 @@ npm start
 
 As a user, I would like to click a button to switch the language between English ("en") and Spanish ("es").
 
-![Creating a multi-lingual application with the Context API and nested components](08b-context-api.gif)
+![Creating a multi-lingual application with the Context API and nested components](context-api.gif)
 
 As an engineer, I need a way to share the application's current language to all of the components in my application that need to be translated.
 
