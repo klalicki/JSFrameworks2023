@@ -19,7 +19,10 @@ function App() {
           <CharacterCount />
         </div>
       </div>
-      {/* This answer will be revealed at a later date */}
+      <div className="container">
+        <h1 className="h3">Challenge 3 - Guessing The Number</h1>
+        <GuessTheNumber />
+      </div>
     </>
   );
 }
