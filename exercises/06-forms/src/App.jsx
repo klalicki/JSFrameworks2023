@@ -12,9 +12,9 @@ function App() {
     lastName: "",
     addressLine1: "",
     city: "",
-    state: "NY",
+    state: "",
     postalCode: "",
-    country: "United States",
+    country: "",
     signUpForNewsLetter: false,
   });
 
