@@ -30,6 +30,7 @@ Whenever you are ready to submit your work, you will need to [commit your work, 
 
 ## Resources
 
+- Projects: [First Project](projects/retro-board/README.md)
 - [Code Sandboxes](https://codesandbox.io/u/matinaspatsos/sandboxes)
 - Installation Guide: [Mac](docs/InstallationGuideMac.md) | [Windows](docs/InstallationGuideWindows.md) | [Linux](docs/InstallationGuideLinuxAndNVM.md)
 - React: [Beginner's Code](https://www.freecodecamp.org/news/react-beginners-guide/) | [Manual](https://reactjs.org/) | [Create React App](https://create-react-app.dev/)
