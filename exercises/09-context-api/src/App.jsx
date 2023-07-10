@@ -1,8 +1,9 @@
 // Import what you need from React
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 import "./App.css";
 import translations from "./assets/translations.json";
 
+const LanguageContext = createContext();
 /**
  * Declare createContext() here.
  */
@@ -11,18 +12,22 @@ function App() {
   /**
    * Set state here. (See useState in "CreateAccount" below.)
    */
-
+  const [language, setLanguage] = useState("en");
   /**
    * You will need to return more than just <CreateAccount />.
    */
-  return <CreateAccount />;
+  return (
+    <LanguageContext.Provider value={[language, setLanguage]}>
+      <CreateAccount />;
+    </LanguageContext.Provider>
+  );
 }
 
 function CreateAccount() {
   /**
    * You will need to replace "useState" with something else.
    */
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useContext(LanguageContext);
 
   /**
    * @see src/assets/translations.json
@@ -121,7 +126,10 @@ function CreateAccount() {
             }
           </small>
         </p>
-        <button type="submit" className="btn btn-lg btn-success">
+        <button
+          type="submit"
+          className="btn btn-lg btn-success"
+        >
           {t["Sign Up"]}
         </button>
       </form>
