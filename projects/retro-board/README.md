@@ -113,15 +113,13 @@ https://github.com/othneildrew/Best-README-Template
 
 ## Project Help
 
-Your instructors are will provide one hour per week to help you with your projects. Please reach out to them at least one day in advance. You can contact them on Slack.
-
-On April 18, we will encourage you to share your work in progress project so that we can tell you if you are heading in the right direction and give any pointers.
+Your instructors are will provide one hour per week to help you with your projects. Please reach out to them at least one day in advance. You can contact them on Teams or email them.
 
 ## Project Submission
 
-The initial deadline for the project is July 31. You will submit your project by sending a link to your Github repository to your instructors over Slack by the deadline. Your project does not have to be 100% complete, but try to complete as much as you can.
+The initial deadline for the project is July 31. You will submit your project by emailing Jamal (jamal@albanycancode.org) and Matina (matina@albanycancode.org) a link to your project repository on Github. Your project does not have to be 100% complete, but try to complete as much as you can.
 
-AlbanyCanCode may host your project in a public space and they may be sharing your work with employers.
+CanCode Communities may host your project in a public space and they may be sharing your work with employers.
 
 ### Project Resubmission
 
