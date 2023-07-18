@@ -1,9 +1,20 @@
 // Import useEffect here
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 // import Axios (or use Fetch)
+import axios from "axios";
 
 function App() {
+  const [imgCount, setImgCount] = useState(1);
+  const [dogImages, setDogImages] = useState([""]);
+
+  useEffect(() => {
+    axios
+      .get(`https://dog.ceo/api/breeds/image/random/${imgCount}`)
+      .then((data) => {
+        setDogImages(data.data.message);
+      });
+  }, [imgCount]);
   /**
    * dogImages
    * @type {Array} an array of image URLs
@@ -13,7 +24,6 @@ function App() {
    *     "https://images.dog.ceo/breeds/lhasa/n02098413_1137.jpg"
    * ]
    */
-  const [dogImages, setDogImages] = useState([]);
 
   /**
    * You may need to set something else in state
@@ -27,7 +37,11 @@ function App() {
     <div className="App">
       <h1>Dogs</h1>
       {/* Make me a controlled input */}
-      <select>
+      <select
+        onChange={(e) => {
+          setImgCount(e.target.value);
+        }}
+      >
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -41,7 +55,13 @@ function App() {
       </select>
       <div className="container">
         {dogImages.map((dogImage, idx) => {
-          return <img key={`dog-${idx}`} height="200" src={dogImage} />;
+          return (
+            <img
+              key={`dog-${idx}`}
+              height="200"
+              src={dogImage}
+            />
+          );
         })}
       </div>
     </div>
