@@ -20,7 +20,6 @@ function App() {
       pagination.currentPage;
     axios.get(apiURL).then((data) => {
       setCharList(data.data.results);
-      console.log(data.data.info);
       // pagination-related code:
       const tempPagination = { ...pagination };
       tempPagination.nextUrl = data.data.info.next;
@@ -36,10 +35,8 @@ function App() {
         .get(`https://rickandmortyapi.com/api/character/${charSelection}`)
         .then((data) => {
           setCurrentChar(data.data);
-          console.log(data.data);
         });
     }
-    console.log(charSelection);
   }, [charSelection]);
   /**
    * Set up state and make AJAX requests here
