@@ -7,13 +7,28 @@ function App() {
   const [charList, setCharList] = useState([]);
   const [charSelection, setCharSelection] = useState();
   const [currentChar, setCurrentChar] = useState({});
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPages: 1,
+    prevUrl: null,
+    nextUrl: null,
+  });
 
   useEffect(() => {
-    const apiURL = "https://rickandmortyapi.com/api/character";
+    const apiURL =
+      "https://rickandmortyapi.com/api/character?page=" +
+      pagination.currentPage;
     axios.get(apiURL).then((data) => {
       setCharList(data.data.results);
+      console.log(data.data.info);
+      // pagination-related code:
+      const tempPagination = { ...pagination };
+      tempPagination.nextUrl = data.data.info.next;
+      tempPagination.prevUrl = data.data.info.prev;
+      tempPagination.totalPages = data.data.info.pages;
+      setPagination(tempPagination);
     });
-  }, []);
+  }, [pagination.currentPage]);
   useEffect(() => {
     // only run the API call if a character has been selected
     if (charSelection) {
@@ -73,6 +88,34 @@ function App() {
                * <option value="2" key="character-1">Morty Smith</option>
                */}
             </select>
+            <nav className="pagination">
+              <button
+                onClick={() => {
+                  setPagination({
+                    ...pagination,
+                    currentPage: pagination.currentPage - 1,
+                  });
+                }}
+                disabled={!pagination.prevUrl}
+              >
+                {"<"}
+              </button>
+              <span>
+                page {pagination.currentPage} of {pagination.totalPages}
+              </span>
+
+              <button
+                onClick={() => {
+                  setPagination({
+                    ...pagination,
+                    currentPage: pagination.currentPage + 1,
+                  });
+                }}
+                disabled={!pagination.nextUrl}
+              >
+                {">"}
+              </button>
+            </nav>
           </div>
         </div>
       </div>
