@@ -93,6 +93,8 @@ function App() {
                 onClick={() => {
                   setPagination({
                     ...pagination,
+                    prevUrl: null,
+                    nextUrl: null,
                     currentPage: pagination.currentPage - 1,
                   });
                 }}
@@ -108,6 +110,8 @@ function App() {
                 onClick={() => {
                   setPagination({
                     ...pagination,
+                    prevUrl: null,
+                    nextUrl: null,
                     currentPage: pagination.currentPage + 1,
                   });
                 }}
