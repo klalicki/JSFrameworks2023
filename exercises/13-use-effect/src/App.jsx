@@ -25,7 +25,7 @@ function App() {
       tempPagination.nextUrl = data.data.info.next;
       tempPagination.prevUrl = data.data.info.prev;
       tempPagination.totalPages = data.data.info.pages;
-
+      setCharSelection(data.data.results[0].id);
       setPagination(tempPagination);
     });
   }, [pagination.currentPage]);
