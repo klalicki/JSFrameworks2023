@@ -7,8 +7,10 @@ function App() {
   const [charList, setCharList] = useState([]);
   const [charSelection, setCharSelection] = useState();
   const [currentChar, setCurrentChar] = useState({});
+
+  // pagination related state:
+  const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState({
-    currentPage: 1,
     totalPages: 1,
     prevUrl: null,
     nextUrl: null,
@@ -16,19 +18,20 @@ function App() {
 
   useEffect(() => {
     const apiURL =
-      "https://rickandmortyapi.com/api/character?page=" +
-      pagination.currentPage;
+      "https://rickandmortyapi.com/api/character?page=" + currentPage;
     axios.get(apiURL).then((data) => {
       setCharList(data.data.results);
-      // pagination-related code:
+
+      //#region pagination
       const tempPagination = { ...pagination };
       tempPagination.nextUrl = data.data.info.next;
       tempPagination.prevUrl = data.data.info.prev;
       tempPagination.totalPages = data.data.info.pages;
       setCharSelection(data.data.results[0].id);
       setPagination(tempPagination);
+      //#endregion
     });
-  }, [pagination.currentPage]);
+  }, [currentPage]);
   useEffect(() => {
     // only run the API call if a character has been selected
     if (charSelection) {
@@ -93,8 +96,8 @@ function App() {
                     ...pagination,
                     prevUrl: null,
                     nextUrl: null,
-                    currentPage: pagination.currentPage - 1,
                   });
+                  setCurrentPage(currentPage - 1);
                 }}
                 disabled={!pagination.prevUrl}
               >
@@ -110,8 +113,8 @@ function App() {
                     ...pagination,
                     prevUrl: null,
                     nextUrl: null,
-                    currentPage: pagination.currentPage + 1,
                   });
+                  setCurrentPage(currentPage + 1);
                 }}
                 disabled={!pagination.nextUrl}
               >
