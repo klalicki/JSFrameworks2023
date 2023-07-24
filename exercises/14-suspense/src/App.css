@@ -1,0 +1,17 @@
+body {
+  font-family: "Grape Nuts", cursive;
+  text-align: center;
+  height: 100%;
+}
+img {
+  display: block;
+  margin: auto;
+}
+blockquote,
+.message {
+  font-size: 1.35rem;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
