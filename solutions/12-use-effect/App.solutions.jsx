@@ -1,90 +1,46 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import "./App.css";
 
 function App() {
+  const [dogImages, setDogImages] = useState([]);
   /**
-   * allCharacters
-   * @type {Array} array of objects, where each object represents a different character.
-   * @example
-   * [
-   *    { id: 15, name: "Alien Rick", ... },
-   *    { id: 16, name: "Amish Cyborg", ... },
-   * ]
+   * amountOfImages
+   * @type {number} the number of dog images to display on the screen.
+   * This should be set when the user selects a value from the dropdown.
    */
-  const [allCharacters, setAllCharacters] = useState([]);
-  /**
-   * image
-   * @type {string} url for the character's image
-   */
-  const [image, setImage] = useState(
-    "https://i.ytimg.com/vi/UFFi9PWKDjg/maxresdefault.jpg"
-  );
-  /**
-   * name
-   * @type {string} name of the character
-   */
-  const [name, setName] = useState("");
-  /**
-   * Gets all characters when the component first renders,
-   * and only when the component first renders.
-   */
+  const [amountOfImages, setAmountOfImages] = useState(1);
+
   useEffect(() => {
     /**
-     * With async & await,
-     * @see https://stackoverflow.com/questions/53332321/react-hook-warnings-for-async-function-in-useeffect-useeffect-function-must-ret
+     * @see https://dog.ceo/dog-api/documentation/random#all
      */
-    const getCharacters = async () => {
-      const response = await axios(
-        /**
-         * @see https://rickandmortyapi.com/documentation/#get-all-characters
-         */
-        "https://rickandmortyapi.com/api/character/"
-      );
-      setAllCharacters(response.data.results);
-    };
-    getCharacters();
-  }, []);
-  /**
-   * Does a request to look up more information on the character,
-   * and then sets the chosen character's name and image.
-   * @param {string|number} characterId
-   */
-  const getCharacter = async (characterId) => {
-    const response = await axios(
-      /**
-       * @see https://rickandmortyapi.com/documentation/#get-a-single-character
-       */
-      `https://rickandmortyapi.com/api/character/${characterId}`
-    );
-    setImage(response.data.image);
-    setName(response.data.name);
-  };
+    fetch(`https://dog.ceo/api/breeds/image/random/${amountOfImages}`)
+      .then((resp) => resp.json())
+      .then((resp) => setDogImages(resp.message));
+  }, [amountOfImages]); // This means an AJAX request is made whenever amountOfImages changes
 
   return (
-    <div className="container">
-      <div className="row text-center" id="body">
-        <h1 id="title-head">{name}</h1>
-        <div id="main-img">
-          <a href="http://rickandmorty.wikia.com/wiki/Rick_Sanchez">
-            <img alt={name} src={image} height="250" />
-          </a>
-          <div className="linkfooter">
-            <p>Select your favorite character</p>
-            <select
-              id="dropdown"
-              type="text"
-              onChange={(e) => getCharacter(e.target.value)}
-            >
-              <option></option>
-              {allCharacters.map((character) => (
-                <option value={character.id} key={character.id}>
-                  {character.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+    <div className="App">
+      <h1>Dogs</h1>
+      <select
+        value={amountOfImages}
+        onChange={(e) => setAmountOfImages(e.target.value)}
+      >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <div className="container">
+        {dogImages.map((dogImage, idx) => {
+          return <img key={`dog-${idx}`} height="200" src={dogImage} />;
+        })}
       </div>
     </div>
   );
