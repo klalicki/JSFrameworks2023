@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
 // Import something here
 import useSWR from "swr";
