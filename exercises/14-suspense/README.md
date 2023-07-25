@@ -4,7 +4,7 @@ In Visual Studio code, press `command+shift+v` (Mac) or `ctrl+shift+v` (Windows)
 
 ## Reason for the Challenge
 
-React 18 released Suspense, which changes how software developers work with AJAX and other asynchronous operations. With Suspense, data and loading status do not need to be stored in state - they will be handled by the Suspense component. A Suspense component will wait for some code to load. While it is waiting, it will display "fallback" code, like a loading symbol, onto the screen. This transforms how software developers engineer code, because a component that fetches data asynchronously can now only focus on fetching data and displaying the result.
+React 18 released Suspense, which changes how software developers work with AJAX and other asynchronous operations. With Suspense, data and loading status do not need to be stored in states - they will be handled by the Suspense component. A Suspense component will wait for some code to load. While it is waiting, it will display "fallback" code, like a loading symbol, onto the screen. This transforms how software developers engineer code, because a component that fetches data asynchronously can now only focus on fetching data and displaying the result.
 
 SWR is a library that handles AJAX requests. It supports Suspense and is much simpler to use then writing your own code for data fetching with Suspense. To learn more about SWR:
 
