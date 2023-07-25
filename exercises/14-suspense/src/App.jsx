@@ -14,9 +14,13 @@ function App() {
       />
       {/* "CatFact" is your async component. Refactor this to use Suspense. Be sure to show loading symbols and handle errors here. */}
       <ErrorBoundary
-        fallback={<div className="alert">there has been an error :(</div>}
+        fallback={
+          <div className="alert alert-danger">there has been an error :(</div>
+        }
       >
-        <Suspense fallback={<div>loading...</div>}>
+        <Suspense
+          fallback={<div className="alert alert-secondary">loading...</div>}
+        >
           <CatFact />
         </Suspense>
       </ErrorBoundary>

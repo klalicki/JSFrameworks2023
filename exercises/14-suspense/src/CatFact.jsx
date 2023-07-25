@@ -4,6 +4,7 @@ import useSWR from "swr";
 
 const fetchCatFacts = async (...args) => {
   const response = await axios.get(...args);
+
   return response.data;
 };
 
