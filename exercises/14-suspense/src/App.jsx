@@ -1,7 +1,7 @@
 // You will need to import two additional things here
 import CatFact from "./CatFact";
 import "./App.css";
-
+import { Suspense } from "react";
 function App() {
   return (
     <>
@@ -12,7 +12,9 @@ function App() {
         height={300}
       />
       {/* "CatFact" is your async component. Refactor this to use Suspense. Be sure to show loading symbols and handle errors here. */}
-      <CatFact />
+      <Suspense fallback={<div>loading...</div>}>
+        <CatFact />
+      </Suspense>
     </>
   );
 }
