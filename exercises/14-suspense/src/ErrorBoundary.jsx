@@ -8,6 +8,9 @@ class ErrorBoundary extends Component {
       error,
     };
   }
+  componentDidCatch(error, errorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
+  }
   render() {
     if (this.state.hasError) {
       return this.props.fallback;
