@@ -13,15 +13,9 @@ function App() {
         height={300}
       />
       {/* ErrorBoundary - renders fallback if any child components throw an error */}
-      <ErrorBoundary
-        fallback={
-          <div className="alert alert-danger">there has been an error :(</div>
-        }
-      >
+      <ErrorBoundary fallback={<div>there has been an error :(</div>}>
         {/* Suspense - renders fallback until child components are resolved */}
-        <Suspense
-          fallback={<div className="alert alert-secondary">loading...</div>}
-        >
+        <Suspense fallback={<div>loading...</div>}>
           {/* CatFact - renders a Cat Fact after calling an API */}
           <CatFact />
         </Suspense>
