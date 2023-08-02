@@ -7,7 +7,18 @@ import countriesList from "./assets/countries.json";
 
 function App() {
   // establishes state object for form data, sets default country and state
-  const [formData, setFormData] = useState({
+  type AppState = {
+    firstName: string;
+    lastName: string;
+    addressLine1: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
+    signUpForNewsLetter: boolean;
+  };
+
+  const [formData, setFormData] = useState<AppState>({
     firstName: "",
     lastName: "",
     addressLine1: "",
@@ -22,11 +33,16 @@ function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // handles all input elements in the form
-  const handleChange = (event) => {
+  const handleChange = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     // select handler based on type of input
     if (event.target.type === "checkbox") {
       // special handler for checkbox (using 'checked' property instead of 'value')
-      setFormData({ ...formData, [event.target.name]: event.target.checked });
+      console.log(event.target.value);
+      // setFormData({ ...formData, [event.target.name]: event.target.checked });
     } else {
       //standard handler for all other input types
       setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -34,7 +50,7 @@ function App() {
   };
 
   // submit handler: stops page from refreshing, and sets the IsSubmitted flag to true
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     setIsSubmitted(true);
   };
@@ -224,7 +240,7 @@ function App() {
           Results:
           <ul className="list-unstyled mb-0">
             {Object.values(formData).map((item) => {
-              return <li key={item}>{item}</li>;
+              return <li key={item.toString()}>{item}</li>;
             })}
           </ul>
         </div>
