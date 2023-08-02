@@ -34,15 +34,12 @@ function App() {
 
   // handles all input elements in the form
   const handleChange = (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>
+    event: React.ChangeEvent<HTMLInputElement & HTMLSelectElement>
   ) => {
     // select handler based on type of input
     if (event.target.type === "checkbox") {
       // special handler for checkbox (using 'checked' property instead of 'value')
-      console.log(event.target.value);
-      // setFormData({ ...formData, [event.target.name]: event.target.checked });
+      setFormData({ ...formData, [event.target.name]: event.target.checked });
     } else {
       //standard handler for all other input types
       setFormData({ ...formData, [event.target.name]: event.target.value });
