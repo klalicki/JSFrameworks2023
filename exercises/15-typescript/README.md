@@ -86,7 +86,7 @@ root.render(
 
 Rename all files that contain React components so that they end with _.tsx_. You will see errors on your screen. Your job is to refactor the code so that it is in TypeScript. For most errors, this means either declaring new types and interfaces or importing and using existing types from React.
 
-You should also rename any JSON files so that they end in _.ts_. You will need to export the countries and states as named exports. For example:
+You should also rename _countries.json_ and _states.json_ so that they end in _.ts_. You will need to export the countries and states as named exports. For example:
 
 ```ts
 // In countries.ts
@@ -96,6 +96,43 @@ export const countries = [
 
 // In App.tsx
 import { countries } from "./assets/countries";
+```
+
+Refactor the error boundary file to be this:
+
+```ts
+import { Component, ErrorInfo, ReactNode } from "react";
+
+type ErrorBoundaryProps = {
+  children?: ReactNode;
+  fallback: ReactNode;
+};
+
+type ErrorBoundaryState = {
+  hasError: boolean;
+  error?: Error;
+};
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  state: ErrorBoundaryState = { hasError: false, error: undefined };
+  static getDerivedStateFromError(error: Error) {
+    return {
+      hasError: true,
+      error,
+    };
+  }
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    console.error("Uncaught error:", error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;
 ```
 
 HINT: For the _fetcher_ function in _exercises\14-suspense\src\CatFact.jsx_, you won't be able to spread the arguments anymore. Before saving _CatFact.jsx_ as a TypeScript file, you can change the arguments so that your only argument is the url ...
