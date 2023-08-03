@@ -11,6 +11,7 @@ const fetchCatFacts = async (url: string): Promise<CatFacts> => {
   return response.data;
 };
 
+/* a React component that fetches a random cat fact */
 function CatFact() {
   // {data} is the return value of the fetcher function
   // calls the API fetcher function
@@ -20,7 +21,8 @@ function CatFact() {
     revalidateOnMount: false,
     revalidateOnReconnect: false,
     refreshInterval: 0,
-  });  /**
+  });
+  /**
    * You may need to change something here
    */
   return <blockquote>{data.fact}</blockquote>;
