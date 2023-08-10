@@ -5,7 +5,7 @@
  */
 
 // import something here
-
+import { useParams } from "react-router-dom";
 /**
  * This imports a list of products.
  */
@@ -16,7 +16,16 @@ function Category() {
    * Category is hardcoded here.
    * This is the only part you will need to change in this file.
    */
-  const category = "office"; // change me
+  const { category } = useParams(); // change me
+  // make sure category is not undefined
+  if (!category) {
+    return <h2>Invalid Category</h2>;
+  }
+  if (inventory[category] === undefined) {
+    return <h2>Invalid Category</h2>;
+  }
+  const products = inventory[category];
+
   /**
    * You will need to some kind of check to make sure the product exists.
    * If it doesn't, display an error message.
@@ -26,7 +35,6 @@ function Category() {
    * All the products in a category. To see how this works, take a look at
    * @see exercises/10-react-router/src/assets/inventory.js
    */
-  const products = inventory[category];
 
   return (
     <div>
@@ -39,8 +47,15 @@ function Category() {
            */
           products.map((product, index) => {
             return (
-              <div className="col mb-4" key={`product-${index}`}>
-                <img src={product.image} alt="" className="mb-3" />
+              <div
+                className="col mb-4"
+                key={`product-${index}`}
+              >
+                <img
+                  src={product.image}
+                  alt=""
+                  className="mb-3"
+                />
                 <div>{product.description}</div>
                 <strong>$ {product.price.toFixed(2)}</strong>
               </div>
