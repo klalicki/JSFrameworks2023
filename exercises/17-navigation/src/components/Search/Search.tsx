@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { Link } from "react-router-dom"; // Do you need to import anything else here?
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Do you need to import anything else here?
 import NavBar from "../NavBar/NavBar";
 import SearchImage from "./SearchImage";
 import { products } from "../../assets/products";
@@ -23,13 +23,14 @@ function Search() {
   /**
    * Add something here
    */
-
+  const navigate = useNavigate();
+  const location = useLocation();
   /**
    * When the user hits the back and forward button, or refreshes the page,
    * you will need to get what the user search for from history.
    * Set the starting value of the text in the search textbox.
    */
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(location.state?.query || "");
   /**
    * This populates the search results.
    */
@@ -38,6 +39,12 @@ function Search() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setResults(search(query));
+    navigate("", {
+      replace: true,
+      state: {
+        query,
+      },
+    });
 
     /**
      * With "useNavigate", put what the user searched for in history.
@@ -58,7 +65,10 @@ function Search() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <button type="submit" className="uk-button uk-button-secondary">
+            <button
+              type="submit"
+              className="uk-button uk-button-secondary"
+            >
               Search
             </button>
           </form>
