@@ -1,7 +1,8 @@
 // You might need to import something from React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IMovie } from "../../types/movies";
 // import Axios (or use Fetch)
+import axios, { AxiosError } from "axios";
 
 type HomeProps = {
   token: string;
@@ -12,6 +13,19 @@ function Home({ token, logout }: HomeProps) {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const getMovies = async () => {
+    try {
+      const data = await axios.get("http://localhost:7001/api/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setMovies(data.data);
+    } catch (error: AxiosError | any) {
+      setErrorMessage(error.message);
+    }
+  };
+  useEffect(() => {
+    getMovies();
+  });
   /**
    * Make an AJAX request to http://localhost:7001/api/movies to get a list of movies.
    * Be sure to provide the token in the AJAX request.
@@ -22,11 +36,21 @@ function Home({ token, logout }: HomeProps) {
       <div className="d-flex justify-content-between">
         <h1 className="h2">You are logged in!</h1>
         {/* Make this button functional */}
-        <button className="btn btn-primary">Logout</button>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            logout();
+          }}
+        >
+          Logout
+        </button>
       </div>
       {movies.map((movie, idx) => {
         return (
-          <div className="media mb-3" key={`movie-${idx}`}>
+          <div
+            className="media mb-3"
+            key={`movie-${idx}`}
+          >
             <img
               src={movie.poster}
               alt={movie.title}
@@ -42,7 +66,10 @@ function Home({ token, logout }: HomeProps) {
         );
       })}
       {errorMessage && (
-        <div className="alert alert-danger" role="alert">
+        <div
+          className="alert alert-danger"
+          role="alert"
+        >
           {errorMessage}
         </div>
       )}
