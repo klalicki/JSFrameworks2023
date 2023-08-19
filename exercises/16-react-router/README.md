@@ -68,7 +68,7 @@ npm install react-router-dom --legacy-peer-dep
 
 You will need to edit each one of these in this exact order. Each file will have comments describing what you need to do.
 
-1. src/index.js
-2. src/components/App/App.jsx
-3. src/components/Home/Home.jsx
-4. src/components/Category/Category.jsx
+1. src/index.tsx
+2. src/components/App/App.tsx
+3. src/components/Home/Home.tsx
+4. src/components/Category/Category.tsx

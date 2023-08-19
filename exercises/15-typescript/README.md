@@ -67,7 +67,7 @@ If you see the "Compiled with problems: ERROR in src/index.tsx" message, change 
 
 ```ts
 import React from "react";
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom/client";
 import App from "./components/App/App"; // This line will vary from exercise to exercise
 
 // Change these lines to resolve TypeScript issues

@@ -23,7 +23,7 @@ In the other terminal window, you will need to navigate to the this folder, inst
 ```bash
 cd exercises/14-auth/
 code . # if you would like to open this in a separate VSCode window
-npm install
+npm install --legacy-peer-deps
 npm start
 ```
 
@@ -51,7 +51,7 @@ NOTE that instead of users, you will be rendering a list of movies.
 
 ## Instructions
 
-Start with the instructions inside _src/components/App/App.jsx_ first, then move on to _src/components/Home/Home.jsx_.
+Start with the instructions inside _src/components/App/App.tsx_ first, then move on to _src/components/Home/Home.tsx_.
 
 You will be making AJAX calls to:
 
