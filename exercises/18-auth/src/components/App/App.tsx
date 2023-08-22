@@ -29,7 +29,7 @@ function App() {
       });
 
       if (!data.data.token) {
-        throw new Error("The server did not return a token!");
+        throw Error("The server did not return a token!");
       } else {
         setToken(data.data.token);
       }

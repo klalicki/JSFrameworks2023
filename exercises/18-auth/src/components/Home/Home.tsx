@@ -13,7 +13,7 @@ function Home({ token, logout }: HomeProps) {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const getMovies = async () => {
+    const getMovies = async () => {
     try {
       const data = await axios.get("http://localhost:7001/api/movies", {
         headers: { Authorization: `Bearer ${token}` },
@@ -25,7 +25,7 @@ function Home({ token, logout }: HomeProps) {
   };
   useEffect(() => {
     getMovies();
-  });
+  }, []);
   /**
    * Make an AJAX request to http://localhost:7001/api/movies to get a list of movies.
    * Be sure to provide the token in the AJAX request.
