@@ -57,6 +57,28 @@ Next, open up a new terminal. (You can either use split screen, or press the plu
 npx create-react-app client --template typescript
 ```
 
+Your project structure should look like this:
+
+```
+.git/
+client/
+  # React files:
+  - .git/ # We are going to remove this
+  - src/
+    - ...
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - tsconfig.json
+node_modules/
+server/
+  # Server files ...
+.gitignore
+package.json
+package-lock.json
+tsconfig.json
+```
+
 You will first want to remove git from the _client_ folder, because you will need to commit the server to git too. You should only have one git repo for the entire project.
 ls
 
