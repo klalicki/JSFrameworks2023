@@ -111,7 +111,7 @@ Routing is a system for resource navigation. When a user clicks on a link, they 
 
 ## API Documentation
 
-As a part of this project, you will be making AJAX requests to the back-end book store server. The server has an API that will allow you to signin, search for books, find details about a single book, look up books in a user’s book store and update books in a user’s book store. In order for this to be a part of your Github portfolio, we have a written a server in Node.js, which you will install and run locally. We also have it setup so that if you choose, you can easily upload the application to [Heroku](https://www.heroku.com/home).
+As a part of this project, you will be making AJAX requests to the back-end book store server. The server has an API that will allow you to signin, search for books, find details about a single book, look up books in a user’s book store and update books in a user’s book store. In order for this to be a part of your Github portfolio, we have a written a server in Node.js, which you will install and run locally. We also have it setup so that if you choose, you can easily upload the application to a hosting service.
 
 The API is a REST based API that will return JSON data. Here is an overview of the API end-points. You will need to plugin the _bookId_, _shelfKey_ and _bookTitle_ into the URL.
 
