@@ -57,6 +57,28 @@ Next, open up a new terminal. (You can either use split screen, or press the plu
 npx create-react-app client --template typescript
 ```
 
+Your project structure should look like this:
+
+```
+.git/
+client/
+  # React files:
+  - .git/ # We are going to remove this
+  - src/
+    - ...
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - tsconfig.json
+node_modules/
+server/
+  # Server files ...
+.gitignore
+package.json
+package-lock.json
+tsconfig.json
+```
+
 You will first want to remove git from the _client_ folder, because you will need to commit the server to git too. You should only have one git repo for the entire project.
 ls
 
@@ -66,7 +88,7 @@ rm -rf .git
 rm .gitignore # Recommended because we already have this at the root level
 ```
 
-To avoid CORS issues, we are going to proxy the server. (What this essentially means is that instead of sending AJAX requests to e.g. _http://localhost:3001/api/signin_, you would send it to _/api/signin_. This will make it easier for those of you who want to host your project on a site like Heroku.) Open up the _client/package.json_ file and add this:
+To avoid CORS issues, we are going to proxy the server. (What this essentially means is that instead of sending AJAX requests to e.g. _http://localhost:3001/api/signin_, you would send it to _/api/signin_. This will make it easier for those of you who want to host your project on a site like Render.) Open up the _client/package.json_ file and add this:
 
 ```json
 {
@@ -89,10 +111,6 @@ We do not have example HTML or CSS for this project. We suggest that you use a C
 - Add a CDN link to the _index.html_ file of your project.
 - Install a CSS library with npm. Import the library's entry CSS file in your _index.js_ file.
 - Install an NPM library like [Material UI](https://mui.com/) or [React Bootstrap](https://react-bootstrap.netlify.app/) with npm. Follow the library's documentation and import the components from the library where needed.
-
-### Heroku
-
-You will need to host your final project for graduation. We recommend Heroku. If you would like to host your project on Heraku, see ["How to Create a React App with a Node Backend: The Complete Guide"](https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/). We will be going over this in class.
 
 ## Project Requirements
 
@@ -142,14 +160,64 @@ While your grade is not determined on whether or not you follow these code quali
 - Remove any components or code that is not being used. (This affects application load time as well as code quality.)
 - Use proper indentation. (Prettier can take care of this.)
 
+## Hosting Your Project
+
+You will need to host a demo of your final project. You must choose a host that will allow you to deploy a Node.js web service. I recommend Render.com because it meets this criteria and has a free tier available. Note that with the free tier, your demo will take a long time to load if it has been inactive for more than 15 minutes.
+
+If you choose Render, here is how you can get started
+
+1. Visit [Render's website](https://render.com/) and click on the "Get Started" button. Proceed to create an account. I suggest you create an account with GitHub, because we are going to use it in the next steps.
+2. Click on "Dashboard" in the navbar on the top of your screen.
+3. Underneath "Web Services", click on "New Web Service".
+
+![Select "New Web Service" screenshot](doc/render-initial-dashboard.png)
+
+4. You should see the "Create a new Web Service" page. In the sidebar on the right, click on "Connect Account" underneath GitHub. You may be asked to login to your GitHub account.
+
+![Connect your GitHub account screenshot](doc/render-connect-github1.png)
+
+5. Underneath "Install Render" screen, I recommend that you choose "Select all repositories". You can select a single repository, but it will you need to change this if you want to host another project later. Scroll down and click "Install".
+
+![Grant Render permissions to your GitHub account screenshot](doc/render-connect-github2.png)
+
+6. You should return to the "Connect a repository" screen and you should see your project in a list of GitHub repositories. Click on the "Connect" button next your final project.
+
+7. You should see "You are deploying a web service for ...". Enter the following;
+   - Provide a name for your app
+   - Change the region to _Ohio (US East)_
+   - The root directory should be blank
+   - The runtime should be "Node"
+   - The build command should be `npm run build`
+   - The start command should be `npm start`
+   - Select the _Free_ instance type
+
+![Screenshot of "You are deploying a web service for ..."](doc/render-new-web-service1.png)
+
+8. Open the "Advanced" tab. Add an environment variable. The key should be `NODE_VERSION`. The value should be whatever you see when you type `node -v` in your terminal. My Node.js version is 18.16.0.
+
+![Screenshot of "You are deploying a web service for ..."](doc/render-new-web-service2.png)
+
+9. Scroll down and click on "Create Web Service" button.
+10. Render will then deploy your app. This will take a few minutes. When you see "Your service is live", the deployment is complete.
+
+You can find the URL inside of the project's dashboard. If you want a custom URL, you will have to register a domain with a DNS service separately. See https://render.com/docs/custom-domains
+
+![Screenshot of project's dashboard](doc/render-dashboard.png)
+
+If you need to deploy new updates to your project:
+
+1. Commit your latest code changes and push to the main branch with `git push origin main`
+2. Go to the Dashboard and select your project.
+3. Click on the "Manual Deploy" button and select "Deploy latest commit".
+
 ## Project Help
 
 Your instructors are will provide one hour per week to help you with your projects. Please reach out to them at least one day in advance. You can contact them on Teams.
 
 ## Project Submission
 
-You must create a new git repository for this project. Within your project, you will need to include a _README.md_ file in the project root directory. All files must be included to install, build, and run your application both locally and on a webhost like Heroku. You are limited to Node.js packages. Instructions on how to install or start your application must be written in the _README.md_. While not required to do so, we suggest you write your _README.md_ in Markdown.
+You must create a new git repository for this project. Within your project, you will need to include a _README.md_ file in the project root directory. All files must be included to install, build, and run your application both locally and on a webhost like Render. You are limited to Node.js packages. Instructions on how to install or start your application must be written in the _README.md_. While not required to do so, we suggest you write your _README.md_ in Markdown.
 
-You will submit your project by emailing Jamal (jamal@albanycancode.org) and Matina (matina@albanycancode.org) a link to your project repository on Github. Your project does not have to be 100% complete, but try to complete as much as you can.
+You will submit your project by emailing Jamal (jamal@albanycancode.org) and Matina (matina@albanycancode.org) a link to your project repository on Github and a hosted demo of your project. Your project does not have to be 100% complete, but try to complete as much as you can.
 
 CanCode Communities may host your project in a public space and they may be sharing your work with employers.

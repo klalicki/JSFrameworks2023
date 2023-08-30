@@ -145,7 +145,7 @@ Routing is a system for resource navigation. When a user clicks on a link, they 
 
 ## API Documentation
 
-As a part of this project, you will be making AJAX requests to the back-end server that remembers the user's chat history. In order for this to be a part of your Github portfolio, we have a written a server in Node.js, which you will install and run locally. We also have it setup so that if you choose, you can easily upload the application to [Heroku](https://www.heroku.com/home).
+As a part of this project, you will be making AJAX requests to the back-end server that remembers the user's chat history. In order for this to be a part of your Github portfolio, we have a written a server in Node.js, which you will install and run locally. We also have it setup so that if you choose, you can easily upload the application to a hosting service.
 
 The API is a REST based API that will return JSON data. Here is an overview of the API end-points. You will need to plugin the _{collectionId}_ and _{youtubeUrl}_ into the URL.
 
