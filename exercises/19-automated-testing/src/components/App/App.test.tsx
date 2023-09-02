@@ -45,12 +45,21 @@ it('should include a textbox called "Link" and the user can type in this textbox
  * @see https://testing-library.com/docs/dom-testing-library/cheatsheet
  * @see https://testing-library.com/docs/queries/about
  */
+it('should contain the text "Here are my favorite sites:"', () => {
+  render(<App />);
+  screen.getByText("Here are my favorite sites:");
+});
 
 /**
  * Write a test that checks to see if two buttons renders on the screen
  * @see https://testing-library.com/docs/dom-testing-library/cheatsheet
  * @see https://jestjs.io/docs/expect#tohavelengthnumber
  */
+it("should render two buttons", () => {
+  render(<App />);
+  const buttons = screen.getAllByRole("button");
+  expect(buttons).toHaveLength(2);
+});
 
 /**
  * Write a test to see if there a textbox called "Link Title" and test that the user can type in this textbox
@@ -59,7 +68,7 @@ it('should include a textbox called "Link" and the user can type in this textbox
  */
 
 // Remove the `.skip` when you are ready to write this test
-it.skip("should hide the links when the hide button is clicked", () => {
+it("should hide the links when the hide button is clicked", () => {
   /**
    * Complete me.
    * @see exercises/17-automated-testing/src/components/Links/Links.jsx
@@ -70,10 +79,15 @@ it.skip("should hide the links when the hide button is clicked", () => {
    * Hint. You probably going to have to use "queryAllBy..." instead of "getAllBy..." so it this does not throw an error.
    * @see https://testing-library.com/docs/queries/about
    */
+  render(<App />);
+  const btnHide = screen.getByTestId("button-hide");
+  fireEvent.click(btnHide);
+  const links = screen.queryAllByRole("link");
+  expect(links).toHaveLength(0);
 });
 
 // Remove the `.skip` when you are ready to write this test
-it.skip("should add the user input to the new link on the screen when the add button is clicked", () => {
+it("should add the user input to the new link on the screen when the add button is clicked", () => {
   /**
    * Complete me.
    * @see exercises/17-automated-testing/src/components/Links/Links.jsx
@@ -83,4 +97,14 @@ it.skip("should add the user input to the new link on the screen when the add bu
    * @see https://testing-library.com/docs/dom-testing-library/api-events#fireeventeventname
    * @see https://testing-library.com/docs/dom-testing-library/api-events
    */
+  render(<App />);
+  const btnAdd = screen.getByTestId("button-add");
+  const inputTitle = screen.getByLabelText("Link Title");
+  const inputUrl = screen.getByLabelText("Link");
+  fireEvent.change(inputTitle, { target: { value: "Sample Link" } });
+  fireEvent.change(inputUrl, { target: { value: "https://sampleurl.com" } });
+  fireEvent.click(btnAdd);
+  const newElem = screen.getByText("Sample Link");
+  const elemUrl = newElem.getAttribute("href");
+  expect(elemUrl).toBe("https://sampleurl.com");
 });
